@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Sakshi 🎉</title>
+
+<style>
+body{
+    margin:0;
+    font-family:'Comic Sans MS',cursive;
+    background:linear-gradient(120deg,#ff6a88,#ff99ac);
+    overflow:hidden;
+    text-align:center;
+    color:white;
+}
+
+h1{
+    margin-top:15px;
+    font-size:3em;
+    animation:bounce 2s infinite;
+}
+h2{
+    color:yellow;
+    animation:glow 1.5s infinite alternate;
+}
+
+@keyframes bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-20px);}
+}
+@keyframes glow{
+    from{text-shadow:0 0 10px #fff;}
+    to{text-shadow:0 0 30px yellow;}
+}
+
+/* Shayari card */
+.card{
+    background:rgba(0,0,0,0.3);
+    padding:20px;
+    border-radius:20px;
+    width:80%;
+    max-width:500px;
+    margin:20px auto;
+    animation:float 3s infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+}
+
+/* Gallery */
+.gallery{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.gallery img{
+    width:150px;
+    height:210px;
+    object-fit:cover;
+    border-radius:20px;
+    animation:float 4s infinite;
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* Video */
+video{
+    width:80%;
+    max-width:420px;
+    margin:20px auto;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.5);
+    animation:float 3s infinite;
+}
+
+/* Cartoon */
+.cartoon{
+    font-size:120px;
+    position:fixed;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+    animation:dance 1s infinite alternate;
+}
+@keyframes dance{
+    from{transform:translateX(-50%) rotate(-10deg);}
+    to{transform:translateX(-50%) rotate(10deg);}
+}
+
+/* Balloons */
+.balloon{
+    position:absolute;
+    bottom:-150px;
+    font-size:50px;
+    animation:fly 6s linear infinite;
+}
+@keyframes fly{
+    from{bottom:-150px;}
+    to{bottom:110%;}
+}
+
+/* Play button */
+#playBtn{
+    position:fixed;
+    top:15px;
+    right:15px;
+    padding:10px 16px;
+    border:none;
+    border-radius:20px;
+    background:#ff4081;
+    color:white;
+    font-size:14px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.4);
+}
+
+/* End Screen */
+#endScreen{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:linear-gradient(120deg,#ff6a88,#ff99ac);
+    text-align:center;
+    padding-top:30vh;
+    font-size:2em;
+}
+
+.cursor{
+    border-right:3px solid white;
+    animation:blink 1s infinite;
+}
+@keyframes blink{
+    50%{border-color:transparent;}
+}
+
+/* Confetti */
+.confetti{
+    position:fixed;
+    width:10px;
+    height:10px;
+    animation:fall 3s linear infinite;
+}
+@keyframes fall{
+    from{top:-10px;}
+    to{top:110%;}
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎉 Happy Birthday 🎉</h1>
+<h2>💖 Sakshi Attri 💖</h2>
+
+<div class="card">
+🌸 Dost ho toh tum jaisi ho <br>
+✨ Har pal roshan ho jaye <br>
+🎂 Aaj sirf tumhari khushiyan bole <br>
+💞 Bestie Forever ♾️
+</div>
+
+<div class="gallery">
+<img src="sakshi1.jpg">
+<img src="sakshi2.jpg">
+<img src="sakshi3.jpg">
+<img src="sakshi4.jpg">
+<img src="sakshi5.jpg">
+</div>
+
+<!-- VIDEO -->
+<video id="videoPlayer" muted playsinline></video>
+
+<div class="cartoon">🧸🎉</div>
+
+<div class="balloon" style="left:10%">🎈</div>
+<div class="balloon" style="left:30%;animation-delay:2s">🎈</div>
+<div class="balloon" style="left:50%;animation-delay:4s">🎈</div>
+<div class="balloon" style="left:70%;animation-delay:1s">🎈</div>
+<div class="balloon" style="left:90%;animation-delay:3s">🎈</div>
+
+<!-- 🎵 MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="birthday.mp3" type="audio/mpeg">
+</audio>
+
+<button id="playBtn" onclick="playMusic()">🎵 Play Song</button>
+
+<!-- END SCREEN -->
+<div id="endScreen">
+<span id="typing"></span><span class="cursor"></span>
+</div>
+
+<script>
+/* Play Music */
+function playMusic(){
+  document.getElementById("bgMusic").play();
+}
+
+/* Video sequence */
+const videos = ["birthday1.mp4","birthday2.mp4"];
+let i = 0;
+const player = document.getElementById("videoPlayer");
+
+player.src = videos[i];
+player.play();
+
+player.onplay = ()=>{
+  document.getElementById("bgMusic").play();
+}
+
+player.onended = ()=>{
+  i++;
+  if(i < videos.length){
+    player.src = videos[i];
+    player.play();
+  } else {
+    player.style.display="none";
+    showEnd();
+  }
+}
+
+/* Typing text */
+const text = "Best of luck for your rest of life 💖\nYou are our Princess 👑";
+let idx = 0;
+
+function showEnd(){
+  document.getElementById("endScreen").style.display="block";
+  typeText();
+  fireworks();
+}
+
+function typeText(){
+  if(idx < text.length){
+    document.getElementById("typing").innerHTML += 
+      text[idx] === "\n" ? "<br>" : text[idx];
+    idx++;
+    setTimeout(typeText,70);
+  }
+}
+
+/* Confetti */
+function fireworks(){
+  for(let i=0;i<80;i++){
+    const c = document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"%";
+    c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+    c.style.animationDelay=Math.random()*3+"s";
+    document.body.appendChild(c);
+  }
+}
+</script>
+
+</body>
+</html>
