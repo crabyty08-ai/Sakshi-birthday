@@ -12,127 +12,121 @@
       --bg2: #ff99ac;
       --card-bg: rgba(0,0,0,0.35);
       --accent: #ff4081;
-      /* safe area for devices with notches */
       --safe-bottom: env(safe-area-inset-bottom, 0px);
     }
 
-    html,body{height:100%;}
+    html,body{height:100%; margin:0;}
     body{
-      margin:0;
       font-family: 'Comic Sans MS', 'Comic Neue', cursive, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       background: linear-gradient(120deg, var(--bg1), var(--bg2));
       text-align:center;
       color: #fff;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
       line-height:1.4;
+      overflow-x:hidden;
     }
 
     .container{
-      padding:24px 16px 48px;
-      max-width:960px;
+      padding:20px 12px 40px;
+      max-width:800px;
       margin:0 auto;
+      position:relative;
+      z-index:2;
     }
 
     h1{
-      margin-top:18px;
-      font-size: clamp(1.4rem, 4vw, 2.4rem);
-      letter-spacing: 0.6px;
+      margin-top:16px;
+      font-size: clamp(1.2rem, 3.5vw, 2rem);
+      letter-spacing: 0.5px;
     }
     h2{
-      margin:6px 0 18px;
-      color: #fff59d; /* soft yellow */
+      margin:6px 0 16px;
+      color: #fff59d;
       font-weight:700;
-      font-size:1.15rem;
+      font-size:1rem;
     }
 
     .card{
       background: var(--card-bg);
-      padding:18px;
-      border-radius:18px;
-      width:90%;
-      max-width:520px;
-      margin:16px auto;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-      color:#fff;
-      font-size:1rem;
+      padding:14px;
+      border-radius:16px;
+      width:85%;
+      max-width:480px;
+      margin:14px auto;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+      font-size:0.95rem;
     }
 
-    /* Gallery */
     .gallery{
       display:flex;
       justify-content:center;
       flex-wrap:wrap;
-      gap:12px;
-      margin:16px 0 6px;
+      gap:10px;
+      margin:14px 0 6px;
     }
     .gallery img{
-      width:130px;
-      height:180px;
+      width:110px;
+      height:150px;
       object-fit:cover;
-      border-radius:12px;
-      box-shadow:0 8px 20px rgba(0,0,0,0.4);
-      display:block;
+      border-radius:10px;
+      box-shadow:0 6px 16px rgba(0,0,0,0.4);
     }
 
-    /* Make images responsive on very small screens */
     @media (max-width:360px){
-      .gallery img{ width:110px; height:150px; }
+      .gallery img{ width:95px; height:130px; }
     }
 
-    /* Video */
     .media-wrap{
-      margin:18px auto;
-      width:90%;
-      max-width:520px;
+      margin:16px auto;
+      width:85%;
+      max-width:480px;
     }
     video{
       width:100%;
-      border-radius:16px;
-      display:block;
+      border-radius:14px;
       background:black;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.35);
     }
 
-    /* Music Button */
     #playBtn{
       position:fixed;
-      bottom: calc(20px + var(--safe-bottom));
-      right:20px;
-      padding:12px 18px;
+      bottom: calc(16px + var(--safe-bottom));
+      right:16px;
+      padding:10px 16px;
       border:none;
-      border-radius:28px;
+      border-radius:24px;
       background: var(--accent);
       color:white;
-      font-size:15px;
-      box-shadow:0 6px 15px rgba(0,0,0,0.35);
+      font-size:14px;
+      box-shadow:0 5px 12px rgba(0,0,0,0.35);
       cursor:pointer;
       z-index:1000;
       display:inline-flex;
       align-items:center;
-      gap:8px;
-    }
-    #playBtn:focus{
-      outline:3px solid rgba(255,255,255,0.2);
-      outline-offset:3px;
+      gap:6px;
     }
 
-    footer{
-      margin-top:28px;
-      color:rgba(255,255,255,0.9);
-      font-size:0.9rem;
-      opacity:0.95;
+    /* Confetti canvas */
+    #confettiCanvas {
+      position: fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      pointer-events:none;
+      z-index:1;
     }
   </style>
 </head>
 
 <body>
+  <canvas id="confettiCanvas"></canvas>
+
   <div class="container">
     <h1>🎉 Happy Birthday 🎉</h1>
     <h2>💖 Sakshi Attri 💖</h2>
 
-    <div class="card" role="region" aria-label="Birthday message">
-      <p style="margin:0;">
+    <div class="card">
+      <p>
         🌸 Dost ho toh tum jaisi ho<br>
         ✨ Har pal roshan ho jaye<br>
         🎂 Aaj sirf tumhari khushiyan bole<br>
@@ -140,94 +134,123 @@
       </p>
     </div>
 
-    <!-- PHOTOS -->
-    <div class="gallery" aria-label="Photo gallery">
-      <img src="sakshi1.jpg" alt="Sakshi smiling in the park" loading="lazy">
-      <img src="sakshi2.jpg" alt="Sakshi with friends at a party" loading="lazy">
-      <img src="sakshi3.jpg" alt="Sakshi cutting the birthday cake" loading="lazy">
+    <div class="gallery">
+      <img src="./sakshi1.jpg" alt="Sakshi smiling in the park">
+      <img src="./sakshi2.jpg" alt="Sakshi with friends at a party">
+      <img src="./sakshi3.jpg" alt="Sakshi cutting the birthday cake">
     </div>
 
-    <!-- VIDEO -->
-    <div class="media-wrap" aria-label="Birthday video">
-      <video controls playsinline preload="metadata" controlsList="nodownload">
-        <source src="birthday.mp4" type="video/mp4">
+    <div class="media-wrap">
+      <video controls playsinline preload="auto">
+        <source src="./birthday.mp4" type="video/mp4">
         Your browser does not support the video element.
       </video>
     </div>
 
     <footer>
-      Tip: Tap the song button at bottom-right to play the birthday song. Autoplay is blocked by most browsers until you interact.
+      🎵 The birthday song starts muted — tap the button to unmute!
     </footer>
   </div>
 
-  <!-- MUSIC -->
-  <audio id="bgMusic" loop preload="none">
-    <source src="birthday.mp3" type="audio/mpeg">
+  <audio id="bgMusic" loop autoplay muted preload="auto">
+    <source src="./birthday.mp3" type="audio/mpeg">
     Your browser does not support audio playback.
   </audio>
 
-  <button id="playBtn" type="button" aria-pressed="false" aria-label="Play birthday song">
-    🎵 <span id="playLabel">Play Song</span>
+  <button id="playBtn" type="button" aria-pressed="false">
+    🎵 <span id="playLabel">Unmute Song</span>
   </button>
 
   <script>
+    // Music toggle
     (function () {
       const audio = document.getElementById('bgMusic');
       const btn = document.getElementById('playBtn');
       const label = document.getElementById('playLabel');
 
-      // Update the button text and aria state
       function updateButton() {
-        if (!audio) return;
-        const playing = !audio.paused && !audio.ended;
-        label.textContent = playing ? 'Pause Song' : 'Play Song';
-        btn.setAttribute('aria-pressed', playing.toString());
+        const muted = audio.muted;
+        label.textContent = muted ? 'Unmute Song' : 'Mute Song';
+        btn.setAttribute('aria-pressed', (!muted).toString());
       }
 
-      // Attempt to play and handle promise rejections gracefully
-      async function tryPlay() {
-        try {
-          await audio.play();
-        } catch (err) {
-          // Playback may be blocked; do nothing (user gesture required)
-          console.warn('Playback failed:', err && err.name ? err.name : err);
-        } finally {
-          updateButton();
-        }
-      }
-
-      // Toggle play/pause
       btn.addEventListener('click', () => {
-        if (audio.paused) {
-          tryPlay();
-        } else {
-          audio.pause();
-          updateButton();
-        }
+        audio.muted = !audio.muted;
+        updateButton();
       });
 
-      // Keyboard space/enter toggles
-      btn.addEventListener('keydown', (e) => {
-        if (e.key === ' ' || e.key === 'Spacebar' || e.key === 'Enter') {
-          e.preventDefault();
-          btn.click();
-        }
-      });
-
-      // Sync UI when audio state changes
-      audio.addEventListener('play', updateButton);
-      audio.addEventListener('pause', updateButton);
-      audio.addEventListener('ended', updateButton);
-
-      // Initialize UI
       updateButton();
     })();
-  </script>
 
-  <noscript>
-    <div style="position:fixed;left:8px;bottom:8px;background:rgba(0,0,0,0.6);color:#fff;padding:8px;border-radius:6px;">
-      JavaScript is disabled — the play/pause button will not work. Open the audio file directly to play: birthday.mp3
-    </div>
-  </noscript>
+    // Confetti animation
+    (function () {
+      const canvas = document.getElementById('confettiCanvas');
+      const ctx = canvas.getContext('2d');
+      let W = window.innerWidth;
+      let H = window.innerHeight;
+      canvas.width = W;
+      canvas.height = H;
+
+      const confettiCount = 150;
+      const confetti = [];
+
+      function randomColor() {
+        const colors = ['#ff4081','#ffeb3b','#4caf50','#2196f3','#ff5722','#9c27b0'];
+        return colors[Math.floor(Math.random()*colors.length)];
+      }
+
+      function ConfettiPiece() {
+        this.x = Math.random()*W;
+        this.y = Math.random()*H - H;
+        this.r = Math.random()*6+4;
+        this.d = Math.random()*confettiCount;
+        this.color = randomColor();
+        this.tilt = Math.floor(Math.random()*10)-10;
+        this.tiltAngleIncrement = Math.random()*0.07+0.05;
+        this.tiltAngle = 0;
+      }
+
+      for(let i=0;i<confettiCount;i++){
+        confetti.push(new ConfettiPiece());
+      }
+
+      function drawConfetti(){
+        ctx.clearRect(0,0,W,H);
+        confetti.forEach(p=>{
+          ctx.beginPath();
+          ctx.lineWidth = p.r;
+          ctx.strokeStyle = p.color;
+          ctx.moveTo(p.x+p.tilt+ p.r/2, p.y);
+          ctx.lineTo(p.x+p.tilt, p.y+p.r);
+          ctx.stroke();
+        });
+        updateConfetti();
+      }
+
+      function updateConfetti(){
+        confetti.forEach(p=>{
+          p.tiltAngle += p.tiltAngleIncrement;
+          p.y += (Math.cos(p.d)+3+p.r/2)/2;
+          p.x += Math.sin(p.tiltAngle);
+          p.tilt = Math.sin(p.tiltAngle)*15;
+
+          if(p.y>H){
+            p.x = Math.random()*W;
+            p.y = -20;
+            p.tilt = Math.floor(Math.random()*10)-10;
+          }
+        });
+      }
+
+      setInterval(drawConfetti,20);
+
+      window.addEventListener('resize',()=>{
+        W = window.innerWidth;
+        H = window.innerHeight;
+        canvas.width = W;
+        canvas.height = H;
+      });
+    })();
+  </script>
 </body>
 </html>
