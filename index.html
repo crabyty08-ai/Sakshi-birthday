@@ -1,120 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Happy Birthday Sakshi 🎉</title>
+  <meta charset="utf-8">
+  <title>Happy Birthday Sakshi 🎉</title>
+  <meta name="description" content="A little birthday page for Sakshi — photos, video and a birthday song.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root{
+      --bg1: #ff6a88;
+      --bg2: #ff99ac;
+      --card-bg: rgba(0,0,0,0.35);
+      --accent: #ff4081;
+      /* safe area for devices with notches */
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
 
-<style>
-body{
-  margin:0;
-  font-family:'Comic Sans MS',cursive;
-  background:linear-gradient(120deg,#ff6a88,#ff99ac);
-  text-align:center;
-  color:white;
-}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: 'Comic Sans MS', 'Comic Neue', cursive, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(120deg, var(--bg1), var(--bg2));
+      text-align:center;
+      color: #fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
+    }
 
-/* ZOOM – mobile ke liye safe */
-.container{
-  padding-bottom:40px;
-}
+    .container{
+      padding:24px 16px 48px;
+      max-width:960px;
+      margin:0 auto;
+    }
 
-h1{
-  margin-top:20px;
-  font-size:2.5em;
-}
-h2{
-  color:yellow;
-}
+    h1{
+      margin-top:18px;
+      font-size: clamp(1.4rem, 4vw, 2.4rem);
+      letter-spacing: 0.6px;
+    }
+    h2{
+      margin:6px 0 18px;
+      color: #fff59d; /* soft yellow */
+      font-weight:700;
+      font-size:1.15rem;
+    }
 
-.card{
-  background:rgba(0,0,0,0.35);
-  padding:20px;
-  border-radius:20px;
-  width:90%;
-  max-width:420px;
-  margin:20px auto;
-}
+    .card{
+      background: var(--card-bg);
+      padding:18px;
+      border-radius:18px;
+      width:90%;
+      max-width:520px;
+      margin:16px auto;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      color:#fff;
+      font-size:1rem;
+    }
 
-/* Photos */
-.gallery{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:12px;
-}
-.gallery img{
-  width:130px;
-  height:180px;
-  object-fit:cover;
-  border-radius:15px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.4);
-}
+    /* Gallery */
+    .gallery{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:12px;
+      margin:16px 0 6px;
+    }
+    .gallery img{
+      width:130px;
+      height:180px;
+      object-fit:cover;
+      border-radius:12px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.4);
+      display:block;
+    }
 
-/* Video */
-video{
-  width:90%;
-  max-width:420px;
-  margin:20px auto;
-  border-radius:20px;
-  display:block;
-  background:black;
-}
+    /* Make images responsive on very small screens */
+    @media (max-width:360px){
+      .gallery img{ width:110px; height:150px; }
+    }
 
-/* Music Button */
-#playBtn{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  padding:12px 18px;
-  border:none;
-  border-radius:25px;
-  background:#ff4081;
-  color:white;
-  font-size:15px;
-  box-shadow:0 6px 15px rgba(0,0,0,0.4);
-}
-</style>
+    /* Video */
+    .media-wrap{
+      margin:18px auto;
+      width:90%;
+      max-width:520px;
+    }
+    video{
+      width:100%;
+      border-radius:16px;
+      display:block;
+      background:black;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+    }
+
+    /* Music Button */
+    #playBtn{
+      position:fixed;
+      bottom: calc(20px + var(--safe-bottom));
+      right:20px;
+      padding:12px 18px;
+      border:none;
+      border-radius:28px;
+      background: var(--accent);
+      color:white;
+      font-size:15px;
+      box-shadow:0 6px 15px rgba(0,0,0,0.35);
+      cursor:pointer;
+      z-index:1000;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    #playBtn:focus{
+      outline:3px solid rgba(255,255,255,0.2);
+      outline-offset:3px;
+    }
+
+    footer{
+      margin-top:28px;
+      color:rgba(255,255,255,0.9);
+      font-size:0.9rem;
+      opacity:0.95;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="container">
+    <h1>🎉 Happy Birthday 🎉</h1>
+    <h2>💖 Sakshi Attri 💖</h2>
 
-<div class="container">
+    <div class="card" role="region" aria-label="Birthday message">
+      <p style="margin:0;">
+        🌸 Dost ho toh tum jaisi ho<br>
+        ✨ Har pal roshan ho jaye<br>
+        🎂 Aaj sirf tumhari khushiyan bole<br>
+        💞 Bestie Forever ♾️
+      </p>
+    </div>
 
-<h1>🎉 Happy Birthday 🎉</h1>
-<h2>💖 Sakshi Attri 💖</h2>
+    <!-- PHOTOS -->
+    <div class="gallery" aria-label="Photo gallery">
+      <img src="sakshi1.jpg" alt="Sakshi smiling in the park" loading="lazy">
+      <img src="sakshi2.jpg" alt="Sakshi with friends at a party" loading="lazy">
+      <img src="sakshi3.jpg" alt="Sakshi cutting the birthday cake" loading="lazy">
+    </div>
 
-<div class="card">
-🌸 Dost ho toh tum jaisi ho <br>
-✨ Har pal roshan ho jaye <br>
-🎂 Aaj sirf tumhari khushiyan bole <br>
-💞 Bestie Forever ♾️
-</div>
+    <!-- VIDEO -->
+    <div class="media-wrap" aria-label="Birthday video">
+      <video controls playsinline preload="metadata" controlsList="nodownload">
+        <source src="birthday.mp4" type="video/mp4">
+        Your browser does not support the video element.
+      </video>
+    </div>
 
-<!-- PHOTOS -->
-<div class="gallery">
-  <img src="sakshi1.jpg" alt="">
-  <img src="sakshi2.jpg" alt="">
-  <img src="sakshi3.jpg" alt="">
-</div>
+    <footer>
+      Tip: Tap the song button at bottom-right to play the birthday song. Autoplay is blocked by most browsers until you interact.
+    </footer>
+  </div>
 
-<!-- VIDEO -->
-<video controls>
-  <source src="birthday.mp4" type="video/mp4">
-  Your browser does not support video.
-</video>
+  <!-- MUSIC -->
+  <audio id="bgMusic" loop preload="none">
+    <source src="birthday.mp3" type="audio/mpeg">
+    Your browser does not support audio playback.
+  </audio>
 
-</div>
+  <button id="playBtn" type="button" aria-pressed="false" aria-label="Play birthday song">
+    🎵 <span id="playLabel">Play Song</span>
+  </button>
 
-<!-- MUSIC -->
-<audio id="bgMusic" loop>
-  <source src="birthday.mp3" type="audio/mpeg">
-</audio>
+  <script>
+    (function () {
+      const audio = document.getElementById('bgMusic');
+      const btn = document.getElementById('playBtn');
+      const label = document.getElementById('playLabel');
 
-<button id="playBtn" onclick="document.getElementById('bgMusic').play()">
-🎵 Play Song
-</button>
+      // Update the button text and aria state
+      function updateButton() {
+        if (!audio) return;
+        const playing = !audio.paused && !audio.ended;
+        label.textContent = playing ? 'Pause Song' : 'Play Song';
+        btn.setAttribute('aria-pressed', playing.toString());
+      }
 
+      // Attempt to play and handle promise rejections gracefully
+      async function tryPlay() {
+        try {
+          await audio.play();
+        } catch (err) {
+          // Playback may be blocked; do nothing (user gesture required)
+          console.warn('Playback failed:', err && err.name ? err.name : err);
+        } finally {
+          updateButton();
+        }
+      }
+
+      // Toggle play/pause
+      btn.addEventListener('click', () => {
+        if (audio.paused) {
+          tryPlay();
+        } else {
+          audio.pause();
+          updateButton();
+        }
+      });
+
+      // Keyboard space/enter toggles
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === ' ' || e.key === 'Spacebar' || e.key === 'Enter') {
+          e.preventDefault();
+          btn.click();
+        }
+      });
+
+      // Sync UI when audio state changes
+      audio.addEventListener('play', updateButton);
+      audio.addEventListener('pause', updateButton);
+      audio.addEventListener('ended', updateButton);
+
+      // Initialize UI
+      updateButton();
+    })();
+  </script>
+
+  <noscript>
+    <div style="position:fixed;left:8px;bottom:8px;background:rgba(0,0,0,0.6);color:#fff;padding:8px;border-radius:6px;">
+      JavaScript is disabled — the play/pause button will not work. Open the audio file directly to play: birthday.mp3
+    </div>
+  </noscript>
 </body>
 </html>
