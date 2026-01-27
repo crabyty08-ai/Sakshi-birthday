@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Happy Birthday Sakshi 🎉</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.2">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body{
@@ -15,15 +15,14 @@ body{
   color:white;
 }
 
-/* ZOOM EFFECT */
+/* ZOOM – mobile ke liye safe */
 .container{
-  transform: scale(1.15);
-  transform-origin: top center;
+  padding-bottom:40px;
 }
 
 h1{
   margin-top:20px;
-  font-size:2.8em;
+  font-size:2.5em;
 }
 h2{
   color:yellow;
@@ -46,8 +45,8 @@ h2{
   gap:12px;
 }
 .gallery img{
-  width:140px;
-  height:190px;
+  width:130px;
+  height:180px;
   object-fit:cover;
   border-radius:15px;
   box-shadow:0 8px 20px rgba(0,0,0,0.4);
@@ -59,20 +58,22 @@ video{
   max-width:420px;
   margin:20px auto;
   border-radius:20px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.5);
+  display:block;
+  background:black;
 }
 
-/* Play music button */
+/* Music Button */
 #playBtn{
   position:fixed;
-  top:15px;
-  right:15px;
-  padding:10px 15px;
+  bottom:20px;
+  right:20px;
+  padding:12px 18px;
   border:none;
-  border-radius:20px;
+  border-radius:25px;
   background:#ff4081;
   color:white;
-  font-size:14px;
+  font-size:15px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.4);
 }
 </style>
 </head>
@@ -93,14 +94,15 @@ video{
 
 <!-- PHOTOS -->
 <div class="gallery">
-  <img src="sakshi1.jpg">
-  <img src="sakshi2.jpg">
-  <img src="sakshi3.jpg">
+  <img src="sakshi1.jpg" alt="">
+  <img src="sakshi2.jpg" alt="">
+  <img src="sakshi3.jpg" alt="">
 </div>
 
-<!-- VIDEO (ONE VIDEO – MOST STABLE) -->
-<video controls playsinline>
+<!-- VIDEO -->
+<video controls>
   <source src="birthday.mp4" type="video/mp4">
+  Your browser does not support video.
 </video>
 
 </div>
