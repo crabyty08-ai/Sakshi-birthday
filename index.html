@@ -95,7 +95,7 @@
 <body>
 
   <!-- Audio (user interaction required on mobile) -->
-  <audio id="music" src="birthday_song.mp3" loop></audio>
+  <audio id="music" src="birthday_song.mp3" loop muted></audio>
 
   <button onclick="startAll()">🎶 Start Birthday Surprise</button>
 
@@ -124,8 +124,11 @@
     }
 
     function playMusic() {
-      document.getElementById("music").play();
-    }
+     function playMusic() {
+  let music = document.getElementById("music");
+  music.muted = false;
+  music.play();
+}
 
     function startWish() {
       setTimeout(() => {
